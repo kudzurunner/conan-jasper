@@ -25,6 +25,7 @@ class JasperConan(ConanFile):
 
     def configure(self):
         del self.settings.compiler.libcxx
+        self.options["libjpeg-turbo"].shared = self.options.shared
 
     def source(self):
         archive_name = "version-{}.tar.gz".format(self.version)
