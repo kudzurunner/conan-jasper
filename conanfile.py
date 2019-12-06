@@ -3,7 +3,7 @@ import os
 
 class JasperConan(ConanFile):
     name = "jasper"
-    version = "2.0.14"
+    version = "2.0.16"
     license = "https://raw.githubusercontent.com/mdadams/jasper/master/LICENSE"
     author = "KudzuRunner"
     url = "https://github.com/kudzurunner/conan-jasper"
@@ -19,7 +19,7 @@ class JasperConan(ConanFile):
         "enable_doc": False,
         "enable_programs": False
     }
-    requires = "libjpeg-turbo/2.0.1@kudzurunner/stable"
+    requires = "libjpeg-turbo/2.0.3@kudzurunner/stable"
     source_name = "{}-version-{}".format(name, version)
     generators = "cmake"
 
@@ -36,8 +36,8 @@ class JasperConan(ConanFile):
         os.remove(archive_name)
 
         tools.replace_in_file(
-            "{}/CMakeLists.txt".format(self.source_name), "project(JasPer LANGUAGES C)",
-            '''project(JasPer LANGUAGES C)
+            "{}/CMakeLists.txt".format(self.source_name), "project(JasPer C)",
+            '''project(JasPer C)
     include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     conan_basic_setup()'''
         )
